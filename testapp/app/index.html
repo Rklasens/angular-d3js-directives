@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+  <ul class="menu">
+
+    <li><a href="#/areachart">Area Chart</a></li>
+    <li><a href="#/linechart">Line Chart</a></li>
+    <li><a href="#/bivariateareachart">Bivariate Area Chart</a></li>
+    <li><a href="#/multiserieslinechart">Multi-Series Line Chart</a></li>
+    <li><a href="#/stackedareachart">Stacked Area Chart</a></li>
+    <li><a href="#/barchart">Bar Chart</a></li>
+    <li><a href="#/stackedbarchart">Stacked Bar Chart</a></li>
+    <li><a href="#/normalizedstackedbarchart">Normalized Stacked Bar Chart</a></li>
+    <li><a href="#/groupedbarchart">Grouped Bar Chart</a></li>
+    <li><a href="#/scatterplot">Scatterplot</a></li>
+    <li><a href="#/donutchart">Donut Chart</a></li>
+    <li><a href="#/piechart">Pie Chart</a></li>
+    <li><a href="#/donutmultiples">Donut Multiples</a></li>
+    <li><a href="#/barchartwithnegativevalues">Bar Chart with Negative Values</a></li>
+
+
+    <li><a href="#/view1">view1</a></li>
+    <li><a href="#/view2">view2</a></li>
+  </ul>
+
+  <div ng-view></div>
+
+  <div>Angular seed app: v<span app-version></span></div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+  -->
+  <script src="http://d3js.org/d3.v3.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="js/basic-charts.js"></script>
+</body>
+</html>
