@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['d3js.directive']).
+angular.module('myApp', ['myApp.services', 'd3js.directive']).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/areachart', {templateUrl: 'partials/areachart.html', controller: AreachartCtrl});
     $routeProvider.when('/linechart', {templateUrl: 'partials/linechart.html', controller: LinechartCtrl});

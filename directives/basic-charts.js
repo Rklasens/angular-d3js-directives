@@ -17,19 +17,16 @@
      - PieChart
      - DonutMultiples
      - BarChartwithNegative Values
-        
 
-    To see some examples: https://github.com/mbostock/d3/wiki/Gallery
+          To see some examples: https://github.com/mbostock/d3/wiki/Gallery
 */
 
 var d3js = angular.module('d3js.directive', []);
 
 d3js.directive('areachart', function ( /* dependencies */ ) {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -98,11 +95,11 @@ d3js.directive('areachart', function ( /* dependencies */ ) {
       // initialization, done once per my-directive tag in template. If my-directive is within an
       // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
       
-      // ...
+    
       
       // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
@@ -110,11 +107,9 @@ d3js.directive('areachart', function ( /* dependencies */ ) {
 
 
 d3js.directive('linechart', function ( /* dependencies */ ) {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -181,11 +176,11 @@ d3js.directive('linechart', function ( /* dependencies */ ) {
       // initialization, done once per my-directive tag in template. If my-directive is within an
       // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
       
-      // ...
+    
       
       // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
@@ -193,11 +188,9 @@ d3js.directive('linechart', function ( /* dependencies */ ) {
 
 
 d3js.directive('bivariateareachart', function() {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -263,15 +256,8 @@ d3js.directive('bivariateareachart', function() {
               .style("text-anchor", "end")
               .text("Temperature (ºF)");
         });
-
-      // initialization, done once per my-directive tag in template. If my-directive is within an
-      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
-      
-      // ...
-      
-      // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
@@ -279,11 +265,9 @@ d3js.directive('bivariateareachart', function() {
 
 
 d3js.directive('multiserieslinechart', function() {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -377,26 +361,17 @@ d3js.directive('multiserieslinechart', function() {
               .attr("dy", ".35em")
               .text(function(d) { return d.name; });
         });
-
-      // initialization, done once per my-directive tag in template. If my-directive is within an
-      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
-      
-      // ...
-      
-      // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
 });
 
 d3js.directive('stackedareachart', function() {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -483,26 +458,17 @@ d3js.directive('stackedareachart', function() {
               .attr("class", "y axis")
               .call(yAxis);
         });
-
-      // initialization, done once per my-directive tag in template. If my-directive is within an
-      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
-      
-      // ...
-      
-      // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
 });
 
 d3js.directive('barchart', function() {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -568,26 +534,17 @@ d3js.directive('barchart', function() {
               .attr("height", function(d) { return height - y(d.frequency); });
 
         });
-
-      // initialization, done once per my-directive tag in template. If my-directive is within an
-      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
-      
-      // ...
-      
-      // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
 });
 
 d3js.directive('stackedbarchart', function() {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -683,25 +640,16 @@ d3js.directive('stackedbarchart', function() {
               .style("text-anchor", "end")
               .text(function(d) { return d; });
         });
-
-      // initialization, done once per my-directive tag in template. If my-directive is within an
-      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
-      
-      // ...
-      
-      // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
 });
 d3js.directive('normalizedstackedbarchart', function() {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -784,26 +732,17 @@ d3js.directive('normalizedstackedbarchart', function() {
               .attr("dy", ".35em")
               .text(function(d) { return d.name; });
         });
-
-      // initialization, done once per my-directive tag in template. If my-directive is within an
-      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
-      
-      // ...
-      
-      // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
 });
 
 d3js.directive('groupedbarchart', function() {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -899,26 +838,17 @@ d3js.directive('groupedbarchart', function() {
               .text(function(d) { return d; });
         });
 
-
-      // initialization, done once per my-directive tag in template. If my-directive is within an
-      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
-      
-      // ...
-      
-      // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
 });
 
 d3js.directive('scatterplot', function() {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -1010,26 +940,17 @@ d3js.directive('scatterplot', function() {
 
         });
 
-
-      // initialization, done once per my-directive tag in template. If my-directive is within an
-      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
-      
-      // ...
-      
-      // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
 });
 
 d3js.directive('donutchart', function() {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -1078,26 +999,17 @@ d3js.directive('donutchart', function() {
 
         });
 
-
-      // initialization, done once per my-directive tag in template. If my-directive is within an
-      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
-      
-      // ...
-      
-      // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
 });
 
 d3js.directive('piechart', function() {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -1146,26 +1058,17 @@ d3js.directive('piechart', function() {
 
         });
 
-
-      // initialization, done once per my-directive tag in template. If my-directive is within an
-      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
-      
-      // ...
-      
-      // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
 });
 
 d3js.directive('donutmultiples', function() {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -1235,26 +1138,17 @@ d3js.directive('donutmultiples', function() {
               .text(function(d) { return d.State; });
 
         });
-
-      // initialization, done once per my-directive tag in template. If my-directive is within an
-      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
-      
-      // ...
-      
-      // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
 });
 
 d3js.directive('barchartwithnegativevalues', function() {
-  // define constants and helpers used for the directive
-  // ...
   return {
-    restrict: 'E', // the directive can be invoked only by using  tag in the template
-    scope: { // attributes bound to the scope of the directive
+    restrict: 'E',
+    scope: {
       val: '='
     },
     link: function (scope, element, attrs) {
@@ -1306,15 +1200,8 @@ d3js.directive('barchartwithnegativevalues', function() {
             .attr("x2", x(0))
             .attr("y1", 0)
             .attr("y2", height);
-
-      // initialization, done once per my-directive tag in template. If my-directive is within an
-      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
-      
-      // ...
-      
-      // whenever the bound 'exp' expression changes, execute this 
       scope.$watch('exp', function (newVal, oldVal) {
-        // ...
+      
       });
     }
   };
