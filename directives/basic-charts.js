@@ -1092,14 +1092,230 @@ d3js.directive('donutchart', function() {
   };
 });
 
-d3js.directive('PieChart', function() {
+d3js.directive('piechart', function() {
+  // define constants and helpers used for the directive
+  // ...
+  return {
+    restrict: 'E', // the directive can be invoked only by using  tag in the template
+    scope: { // attributes bound to the scope of the directive
+      val: '='
+    },
+    link: function (scope, element, attrs) {
+        var data_url = attrs['csv'];
+        var width = 960,
+            height = 500,
+            radius = Math.min(width, height) / 2;
 
+        var color = d3.scale.ordinal()
+            .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+        var arc = d3.svg.arc()
+            .outerRadius(radius - 10)
+            .innerRadius(0);
+
+        var pie = d3.layout.pie()
+            .sort(null)
+            .value(function(d) { return d.population; });
+
+        var svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+          .append("g")
+            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+        d3.csv(data_url, function(error, data) {
+
+          data.forEach(function(d) {
+            d.population = +d.population;
+          });
+
+          var g = svg.selectAll(".arc")
+              .data(pie(data))
+            .enter().append("g")
+              .attr("class", "arc");
+
+          g.append("path")
+              .attr("d", arc)
+              .style("fill", function(d) { return color(d.data.age); });
+
+          g.append("text")
+              .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+              .attr("dy", ".35em")
+              .style("text-anchor", "middle")
+              .text(function(d) { return d.data.age; });
+
+        });
+
+
+      // initialization, done once per my-directive tag in template. If my-directive is within an
+      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
+      
+      // ...
+      
+      // whenever the bound 'exp' expression changes, execute this 
+      scope.$watch('exp', function (newVal, oldVal) {
+        // ...
+      });
+    }
+  };
 });
 
-d3js.directive('DonutMultiples', function() {
+d3js.directive('donutmultiples', function() {
+  // define constants and helpers used for the directive
+  // ...
+  return {
+    restrict: 'E', // the directive can be invoked only by using  tag in the template
+    scope: { // attributes bound to the scope of the directive
+      val: '='
+    },
+    link: function (scope, element, attrs) {
+        var data_url = attrs['csv'];
+        var radius = 74,
+            padding = 10;
 
+        var color = d3.scale.ordinal()
+            .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+        var arc = d3.svg.arc()
+            .outerRadius(radius)
+            .innerRadius(radius - 30);
+
+        var pie = d3.layout.pie()
+            .sort(null)
+            .value(function(d) { return d.population; });
+
+        d3.csv(data_url, function(error, data) {
+          color.domain(d3.keys(data[0]).filter(function(key) { return key !== "State"; }));
+
+          data.forEach(function(d) {
+            d.ages = color.domain().map(function(name) {
+              return {name: name, population: +d[name]};
+            });
+          });
+
+          var legend = d3.select("body").append("svg")
+              .attr("class", "legend")
+              .attr("width", radius * 2)
+              .attr("height", radius * 2)
+            .selectAll("g")
+              .data(color.domain().slice().reverse())
+            .enter().append("g")
+              .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+          legend.append("rect")
+              .attr("width", 18)
+              .attr("height", 18)
+              .style("fill", color);
+
+          legend.append("text")
+              .attr("x", 24)
+              .attr("y", 9)
+              .attr("dy", ".35em")
+              .text(function(d) { return d; });
+
+          var svg = d3.select("body").selectAll(".pie")
+              .data(data)
+            .enter().append("svg")
+              .attr("class", "pie")
+              .attr("width", radius * 2)
+              .attr("height", radius * 2)
+            .append("g")
+              .attr("transform", "translate(" + radius + "," + radius + ")");
+
+          svg.selectAll(".arc")
+              .data(function(d) { return pie(d.ages); })
+            .enter().append("path")
+              .attr("class", "arc")
+              .attr("d", arc)
+              .style("fill", function(d) { return color(d.data.name); });
+
+          svg.append("text")
+              .attr("dy", ".35em")
+              .style("text-anchor", "middle")
+              .text(function(d) { return d.State; });
+
+        });
+
+      // initialization, done once per my-directive tag in template. If my-directive is within an
+      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
+      
+      // ...
+      
+      // whenever the bound 'exp' expression changes, execute this 
+      scope.$watch('exp', function (newVal, oldVal) {
+        // ...
+      });
+    }
+  };
 });
 
-d3js.directive('BarChartwithNegativeValues', function() {
+d3js.directive('barchartwithnegativevalues', function() {
+  // define constants and helpers used for the directive
+  // ...
+  return {
+    restrict: 'E', // the directive can be invoked only by using  tag in the template
+    scope: { // attributes bound to the scope of the directive
+      val: '='
+    },
+    link: function (scope, element, attrs) {
 
+        var data = [-15, -20, -22, -18, 2, 6, -26, -18];
+
+        var margin = {top: 30, right: 10, bottom: 10, left: 10},
+            width = 960 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+        var x0 = Math.max(-d3.min(data), d3.max(data));
+
+        var x = d3.scale.linear()
+            .domain([-x0, x0])
+            .range([0, width])
+            .nice();
+
+        var y = d3.scale.ordinal()
+            .domain(d3.range(data.length))
+            .rangeRoundBands([0, height], .2);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("top");
+
+        var svg = d3.select("body").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        svg.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("class", function(d) { return d < 0 ? "bar negative" : "bar positive"; })
+            .attr("x", function(d) { return x(Math.min(0, d)); })
+            .attr("y", function(d, i) { return y(i); })
+            .attr("width", function(d) { return Math.abs(x(d) - x(0)); })
+            .attr("height", y.rangeBand());
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .call(xAxis);
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .append("line")
+            .attr("x1", x(0))
+            .attr("x2", x(0))
+            .attr("y1", 0)
+            .attr("y2", height);
+
+      // initialization, done once per my-directive tag in template. If my-directive is within an
+      // ng-repeat-ed template then it will be called every time ngRepeat creates a new copy of the template.
+      
+      // ...
+      
+      // whenever the bound 'exp' expression changes, execute this 
+      scope.$watch('exp', function (newVal, oldVal) {
+        // ...
+      });
+    }
+  };
 });
